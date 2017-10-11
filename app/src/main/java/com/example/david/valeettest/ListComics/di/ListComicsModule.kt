@@ -1,6 +1,8 @@
 package com.example.david.valeettest.ListComics.di
 
 import com.example.david.valeettest.ListComics.ListComicsView
+import com.example.david.valeettest.ListComics.model.ListComicsModel
+import com.example.david.valeettest.ListComics.model.ListComicsModelImp
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenter
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenterImp
 import dagger.Module

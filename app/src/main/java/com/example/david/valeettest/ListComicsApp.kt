@@ -2,9 +2,7 @@ package com.example.david.valeettest
 
 import android.app.Application
 import com.example.david.valeettest.ListComics.ListComicsView
-import com.example.david.valeettest.ListComics.di.DaggerListComicsComponent
-import com.example.david.valeettest.ListComics.di.ListComicsComponent
-import com.example.david.valeettest.ListComics.di.ListComicsModule
+import com.example.david.valeettest.ListComics.di.*
 
 /**
  * Created by david on 11/10/17.
@@ -15,6 +13,12 @@ class ListComicsApp: Application() {
         fun listComicsComponent(view: ListComicsView): ListComicsComponent {
             return DaggerListComicsComponent.builder()
                     .listComicsModule(ListComicsModule(view))
+                    .build()
+        }
+
+        fun listComicsPresenterComponent(): ListComicsPresenterComponent {
+            return DaggerListComicsPresenterComponent.builder()
+                    .listComicsPresenterModule(ListComicsPresenterModule())
                     .build()
         }
     }

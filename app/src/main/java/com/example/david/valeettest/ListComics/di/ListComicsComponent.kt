@@ -1,6 +1,7 @@
 package com.example.david.valeettest.ListComics.di
 
 import com.example.david.valeettest.ListComics.ListComicsActivity
+import com.example.david.valeettest.ListComics.presenter.ListComicsPresenter
 import dagger.Component
 import javax.inject.Singleton
 
