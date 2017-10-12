@@ -27,4 +27,8 @@ class ComicsClient {
                 .client(client.build())
                 .build()
     }
+
+    fun callComics(): ComicsService {
+        return this.retrofit.create(ComicsService::class.java)
+    }
 }

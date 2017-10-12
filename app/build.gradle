@@ -18,6 +18,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "MARVEL_APIKEY", project.property('MARVEL_APIKEY')
+            buildConfigField "String", "MARVEL_PRIVATE", project.property('MARVEL_PRIVATE')
+        }
+
+        debug {
+            buildConfigField "String", "MARVEL_APIKEY", project.property('MARVEL_APIKEY')
+            buildConfigField "String", "MARVEL_PRIVATE", project.property('MARVEL_PRIVATE')
         }
     }
     configurations.all {
@@ -73,6 +80,8 @@ dependencies {
     compile "com.google.dagger:dagger-android:$daggerVersion"
     compile "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    compile "commons-codec:commons-codec:1.10"
 
     testCompile 'junit:junit:4.12'
 }

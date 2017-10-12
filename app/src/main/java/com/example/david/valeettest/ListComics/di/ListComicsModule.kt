@@ -5,6 +5,7 @@ import com.example.david.valeettest.ListComics.model.ListComicsModel
 import com.example.david.valeettest.ListComics.model.ListComicsModelImp
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenter
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenterImp
+import com.example.david.valeettest.api.ComicsClient
 import dagger.Module
 import dagger.Provides
 
@@ -20,7 +21,12 @@ class ListComicsModule(var view: ListComicsView) {
     }
 
     @Provides
-    fun providesListComicsModel(): ListComicsModel {
-        return ListComicsModelImp()
+    fun providesListComicsModel(client: ComicsClient): ListComicsModel {
+        return ListComicsModelImp(client)
+    }
+
+    @Provides
+    fun providesRestClient(): ComicsClient {
+        return ComicsClient()
     }
 }
