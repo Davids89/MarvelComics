@@ -15,15 +15,16 @@ class ListComicsActivity : AppCompatActivity(), ListComicsView {
 
     @Inject
     lateinit var presenter: ListComicsPresenter
+
+    @Inject
     lateinit var adapter: ComicsListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ListComicsApp.listComicsComponent(this).inject(this)
+        ListComicsApp.listComicsComponent(this, this).inject(this)
 
-        setupAdapter()
         setupRecyclerView()
 
         presenter.onCreate()
@@ -32,10 +33,6 @@ class ListComicsActivity : AppCompatActivity(), ListComicsView {
     private fun setupRecyclerView() {
         comicsRecycler.adapter = adapter
         comicsRecycler.layoutManager = LinearLayoutManager(this)
-    }
-
-    private fun setupAdapter() {
-        adapter = ComicsListAdapter()
     }
 
     override fun getComicsAndFillView(comics: List<Comic>?) {
