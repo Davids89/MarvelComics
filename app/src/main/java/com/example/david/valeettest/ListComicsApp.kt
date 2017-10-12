@@ -15,11 +15,5 @@ class ListComicsApp: Application() {
                     .listComicsModule(ListComicsModule(view))
                     .build()
         }
-
-        fun listComicsPresenterComponent(): ListComicsPresenterComponent {
-            return DaggerListComicsPresenterComponent.builder()
-                    .listComicsPresenterModule(ListComicsPresenterModule())
-                    .build()
-        }
     }
 }

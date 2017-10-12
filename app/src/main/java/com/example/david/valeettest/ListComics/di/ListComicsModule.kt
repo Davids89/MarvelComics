@@ -15,7 +15,12 @@ import dagger.Provides
 class ListComicsModule(var view: ListComicsView) {
 
     @Provides
-    fun providesListComicsPresenter(): ListComicsPresenter {
-        return ListComicsPresenterImp(view)
+    fun providesListComicsPresenter(model: ListComicsModel): ListComicsPresenter {
+        return ListComicsPresenterImp(view, model)
+    }
+
+    @Provides
+    fun providesListComicsModel(): ListComicsModel {
+        return ListComicsModelImp()
     }
 }
