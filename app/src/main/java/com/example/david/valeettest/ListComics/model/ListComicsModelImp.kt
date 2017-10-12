@@ -3,12 +3,12 @@ package com.example.david.valeettest.ListComics.model
 import com.example.david.valeettest.BuildConfig
 import com.example.david.valeettest.api.ComicsClient
 import com.example.david.valeettest.api.ComicsResponse
+import io.reactivex.Observable
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.security.MessageDigest
 import java.util.*
 
 /**
@@ -16,24 +16,22 @@ import java.util.*
  */
 class ListComicsModelImp(var client: ComicsClient): ListComicsModel {
 
-    override fun getComics() {
+    override fun getComics(): Observable<ComicsResponse> {
 
-        val ts: Long = Date().time
-        val hash: String = String(Hex.encodeHex(DigestUtils.md5(ts.toString() + BuildConfig.MARVEL_PRIVATE + BuildConfig.MARVEL_APIKEY)))
+        return Observable.create { subscriber ->
 
-        client.callComics().getComics(BuildConfig.MARVEL_APIKEY, ts.toString(), hash).enqueue()
-    }
+            val ts: Long = Date().time
+            val hash: String = String(Hex.encodeHex(DigestUtils.md5(ts.toString() + BuildConfig.MARVEL_PRIVATE + BuildConfig.MARVEL_APIKEY)))
 
-    private fun Call<ComicsResponse>.enqueue() {
-        enqueue(object : Callback<ComicsResponse> {
-            override fun onResponse(call: Call<ComicsResponse>?, response: Response<ComicsResponse>?) {
-                
+            val response = client.callComics().getComics(BuildConfig.MARVEL_APIKEY, ts.toString(), hash).execute()
+
+            if(response.isSuccessful) {
+                subscriber.onNext(response.body()!!)
+                subscriber.onComplete()
+            } else {
+                subscriber.onError(Throwable(response.message()))
             }
-
-            override fun onFailure(call: Call<ComicsResponse>?, t: Throwable?) {
-                println(t?.localizedMessage.toString())
-            }
-        })
+        }
     }
 }
 
