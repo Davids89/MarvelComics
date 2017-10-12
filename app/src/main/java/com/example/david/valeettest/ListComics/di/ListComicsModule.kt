@@ -1,10 +1,11 @@
 package com.example.david.valeettest.ListComics.di
 
-import com.example.david.valeettest.ListComics.ListComicsView
+import com.example.david.valeettest.ListComics.ui.ListComicsView
 import com.example.david.valeettest.ListComics.model.ListComicsModel
 import com.example.david.valeettest.ListComics.model.ListComicsModelImp
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenter
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenterImp
+import com.example.david.valeettest.ListComics.ui.adapter.ComicsListAdapter
 import com.example.david.valeettest.api.ComicsClient
 import dagger.Module
 import dagger.Provides

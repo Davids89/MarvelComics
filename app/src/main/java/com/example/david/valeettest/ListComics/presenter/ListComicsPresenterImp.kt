@@ -1,6 +1,6 @@
 package com.example.david.valeettest.ListComics.presenter
 
-import com.example.david.valeettest.ListComics.ListComicsView
+import com.example.david.valeettest.ListComics.ui.ListComicsView
 import com.example.david.valeettest.ListComics.model.ListComicsModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -17,7 +17,7 @@ class ListComicsPresenterImp(var view: ListComicsView, var model: ListComicsMode
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     comics ->
-                    println("Llega")
+                    view.getComicsAndFillView(comics.data!!.comics)
                 }, {
                     e ->
                     println(e.localizedMessage.toString())

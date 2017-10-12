@@ -1,7 +1,7 @@
 package com.example.david.valeettest
 
 import android.app.Application
-import com.example.david.valeettest.ListComics.ListComicsView
+import com.example.david.valeettest.ListComics.ui.ListComicsView
 import com.example.david.valeettest.ListComics.di.*
 
 /**

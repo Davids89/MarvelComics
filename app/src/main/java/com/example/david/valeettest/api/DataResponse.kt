@@ -1,6 +1,6 @@
 package com.example.david.valeettest.api
 
-import com.example.david.valeettest.ListComics.entities.Comic
+import com.example.david.valeettest.entities.Comic
 import com.google.gson.annotations.SerializedName
 
 /**

@@ -1,4 +1,4 @@
-package com.example.david.valeettest.ListComics.entities
+package com.example.david.valeettest.entities
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -7,13 +7,13 @@ import com.google.gson.annotations.SerializedName
  * Created by david on 12/10/17.
  */
 
-class Creators {
+class Characters {
     @SerializedName("available")
     var available: Int? = null
     @SerializedName("collectionURI")
     var collectionURI: String? = null
     @SerializedName("items")
-    var items: List<Item>? = null
+    var items: List<Any>? = null
     @SerializedName("returned")
     var returned: Int? = null
 }

@@ -1,4 +1,4 @@
-package com.example.david.valeettest.ListComics.entities
+package com.example.david.valeettest.entities
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
