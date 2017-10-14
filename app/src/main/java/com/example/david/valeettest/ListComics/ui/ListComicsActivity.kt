@@ -11,6 +11,7 @@ import com.example.david.valeettest.ListComicsApp
 import com.example.david.valeettest.R
 import com.example.david.valeettest.comicDetails.ui.ComicDetailsActivity
 import com.example.david.valeettest.entities.Comic
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -21,6 +22,9 @@ class ListComicsActivity : AppCompatActivity(), ListComicsView, OnItemClick {
 
     @Inject
     lateinit var adapter: ComicsListAdapter
+
+    @Inject
+    lateinit var gson: Gson
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,11 @@ class ListComicsActivity : AppCompatActivity(), ListComicsView, OnItemClick {
 
     override fun onClick(comic: Comic?) {
         val intent = Intent(this, ComicDetailsActivity::class.java)
+
+        var jsonComic = gson.toJson(comic)
+
+        intent.putExtra("COMIC", jsonComic)
+
         startActivity(intent)
     }
 }

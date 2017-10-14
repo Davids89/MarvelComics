@@ -12,6 +12,7 @@ import com.example.david.valeettest.ListComics.ui.adapter.ComicsListAdapter
 import com.example.david.valeettest.ListComics.ui.adapter.OnItemClick
 import com.example.david.valeettest.api.ComicsClient
 import com.example.david.valeettest.lib.GlideImageLoader
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 
@@ -44,5 +45,10 @@ class ListComicsModule(var view: ListComicsView, var activity: ListComicsActivit
     @Provides
     fun providesGlide(): GlideImageLoader {
         return GlideImageLoader(Glide.with(activity))
+    }
+
+    @Provides
+    fun providesGson(): Gson {
+        return Gson()
     }
 }
