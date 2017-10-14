@@ -11,7 +11,7 @@ import com.example.david.valeettest.lib.ImageLoader
 /**
  * Created by david on 12/10/17.
  */
-class ComicsListAdapter(var imageLoader: ImageLoader): RecyclerView.Adapter<ComicViewHolder>() {
+class ComicsListAdapter(var imageLoader: ImageLoader, var onClick: OnItemClick): RecyclerView.Adapter<ComicViewHolder>() {
 
     var comicsList: List<Comic>? = listOf()
 
@@ -19,6 +19,7 @@ class ComicsListAdapter(var imageLoader: ImageLoader): RecyclerView.Adapter<Comi
         val comic = comicsList?.get(position)
 
         holder!!.bindComic(comic, imageLoader)
+        holder.setOnClickListener(onClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ComicViewHolder {

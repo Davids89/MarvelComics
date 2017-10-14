@@ -9,6 +9,7 @@ import com.example.david.valeettest.ListComics.presenter.ListComicsPresenter
 import com.example.david.valeettest.ListComics.presenter.ListComicsPresenterImp
 import com.example.david.valeettest.ListComics.ui.ListComicsActivity
 import com.example.david.valeettest.ListComics.ui.adapter.ComicsListAdapter
+import com.example.david.valeettest.ListComics.ui.adapter.OnItemClick
 import com.example.david.valeettest.api.ComicsClient
 import com.example.david.valeettest.lib.GlideImageLoader
 import dagger.Module
@@ -18,7 +19,7 @@ import dagger.Provides
  * Created by david on 11/10/17.
  */
 @Module
-class ListComicsModule(var view: ListComicsView, var activity: ListComicsActivity) {
+class ListComicsModule(var view: ListComicsView, var activity: ListComicsActivity, var onClick: OnItemClick) {
 
     @Provides
     fun providesListComicsPresenter(model: ListComicsModel): ListComicsPresenter {
@@ -27,7 +28,7 @@ class ListComicsModule(var view: ListComicsView, var activity: ListComicsActivit
 
     @Provides
     fun providesComicsAdapter(imageLoader: GlideImageLoader): ComicsListAdapter {
-        return ComicsListAdapter(imageLoader)
+        return ComicsListAdapter(imageLoader, onClick)
     }
 
     @Provides

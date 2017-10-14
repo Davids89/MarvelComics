@@ -12,9 +12,18 @@ import java.net.URL
  */
 class ComicViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
+    var comic: Comic? = null
+
     fun bindComic(comic: Comic?, imageLoader: ImageLoader){
+
+        this.comic = comic
+
         itemView.comicName.text = comic?.title
         if(comic?.images!!.isNotEmpty())
             imageLoader.loadImage(itemView.comicImage, comic.images[0].path + "." + comic.images[0].extension)
+    }
+
+    fun setOnClickListener(onClick: OnItemClick) {
+        itemView.setOnClickListener { v -> onClick.onClick(comic)}
     }
 }
