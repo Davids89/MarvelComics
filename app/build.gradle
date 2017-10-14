@@ -81,7 +81,8 @@ dependencies {
     compile "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
-    compile "commons-codec:commons-codec:1.10"
 
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
     testCompile 'junit:junit:4.12'
 }
