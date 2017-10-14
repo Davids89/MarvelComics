@@ -50,7 +50,7 @@ class ListComicsActivity : AppCompatActivity(), ListComicsView, OnItemClick {
     override fun onClick(comic: Comic?) {
         val intent = Intent(this, ComicDetailsActivity::class.java)
 
-        var jsonComic = gson.toJson(comic)
+        val jsonComic = gson.toJson(comic)
 
         intent.putExtra("COMIC", jsonComic)
 

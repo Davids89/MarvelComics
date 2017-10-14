@@ -8,6 +8,7 @@ import com.example.david.valeettest.ListComics.ui.adapter.OnItemClick
 import com.example.david.valeettest.comicDetails.di.ComicDetailsComponent
 import com.example.david.valeettest.comicDetails.di.ComicDetailsModule
 import com.example.david.valeettest.comicDetails.di.DaggerComicDetailsComponent
+import com.example.david.valeettest.comicDetails.ui.ComicDetailsActivity
 import com.example.david.valeettest.comicDetails.ui.ComicDetailsView
 
 /**
@@ -22,9 +23,9 @@ class ListComicsApp: Application() {
                     .build()
         }
 
-        fun comicDetailsComponent(view: ComicDetailsView) : ComicDetailsComponent {
+        fun comicDetailsComponent(view: ComicDetailsView, activity: ComicDetailsActivity) : ComicDetailsComponent {
             return DaggerComicDetailsComponent.builder()
-                    .comicDetailsModule(ComicDetailsModule(view))
+                    .comicDetailsModule(ComicDetailsModule(view, activity))
                     .build()
         }
     }
