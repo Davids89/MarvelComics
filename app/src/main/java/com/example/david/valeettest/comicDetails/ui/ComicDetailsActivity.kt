@@ -11,6 +11,7 @@ import com.example.david.valeettest.entities.Comic
 import com.example.david.valeettest.lib.ImageLoader
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_comic_details.*
+import kotlinx.android.synthetic.main.item_comic_details_basic.*
 import javax.inject.Inject
 
 class ComicDetailsActivity : AppCompatActivity(), ComicDetailsView {
@@ -49,5 +50,6 @@ class ComicDetailsActivity : AppCompatActivity(), ComicDetailsView {
     private fun setViewData() {
         comicName.text = comic.title
         imageLoader.loadImage(comicImage, comic.images!![0].path!! + '.' + comic.images!![0].extension)
+        comicDescription.text = comic.description
     }
 }
